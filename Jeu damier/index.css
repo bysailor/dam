@@ -1,0 +1,77 @@
+.noir {
+    background: rgb(31, 23, 16);
+}
+.blanc {
+    background: rgb(255, 232, 192);
+}
+.noir, .blanc {
+    transition: all 1s;
+    cursor: pointer;
+}
+.noir:hover {
+    transition: all 0.5s;
+    background-color: rgb(58, 40, 29);
+}
+.blanc:hover {
+    transition: all 0.5s;
+    background-color: rgb(184, 171, 144);
+}
+.line {
+    width: 100%;
+    display: flex;
+}
+.line div {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+body {
+    margin: 0%;
+}
+#divou {
+    transition: border 0.25s;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    border: 2px solid rgb(255, 255, 255);
+}
+.sea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+.tournoir {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    background-color: rgb(31, 23, 16);
+    cursor: pointer;
+    width:100%;
+}
+.tourblanche {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    background-color: rgb(255, 232, 192);
+    cursor: pointer;
+    width:100%;
+}
+.tournoir:hover {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    transition: all 0.5s;
+    background-color: rgb(58, 40, 29);
+}
+.tourblanche:hover {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    transition: all 0.5s;
+    background-color: rgb(184, 171, 144);
+}
+.noirposs {
+    transition: all 0.5s;
+    background-color: rgb(61, 53, 46);
+}
+.blancheposs {
+    transition: all 0.5s;
+    background-color: rgb(255, 252, 212);
+}
