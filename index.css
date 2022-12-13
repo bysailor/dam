@@ -1,0 +1,52 @@
+.noir {
+    background: black;
+}
+.blanc {
+    background: white;
+}
+.noir, .blanc {
+    transition: all 1s;
+    cursor: pointer;
+}
+.noir:hover {
+    transition: all 0.5s;
+    background: rgb(75, 75, 75);
+}
+.blanc:hover {
+    transition: all 0.5s;
+    background: rgb(200, 200, 200);
+}
+.line {
+    width: 100%;
+    display: flex;
+}
+.line div {
+    aspect-ratio: 1 / 1;
+    width: 100%;
+}
+body {
+    margin: 0%;
+}
+#divou {
+    transition: border 0.25s;
+    margin-left: auto;
+    margin-right: auto;
+    width: 30%;
+    border: 2px solid rgb(255, 255, 255);
+}
+.sea {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-content: center;
+    text-align: center;
+}
+.tour {
+    aspect-ratio: 1 / 1;
+    border-radius: 100%;
+    background-color: green;
+}
+.poss {
+    aspect-ratio: 1 / 1;
+    background-color: green;
+}
