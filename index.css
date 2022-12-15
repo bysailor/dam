@@ -1,8 +1,8 @@
 .noir {
-    background: black;
+    background: rgb(31, 23, 16);
 }
 .blanc {
-    background: white;
+    background: rgb(255, 232, 192);
 }
 .noir, .blanc {
     transition: all 1s;
@@ -10,11 +10,11 @@
 }
 .noir:hover {
     transition: all 0.5s;
-    background: rgb(75, 75, 75);
+    background-color: rgb(58, 40, 29);
 }
 .blanc:hover {
     transition: all 0.5s;
-    background: rgb(200, 200, 200);
+    background-color: rgb(184, 171, 144);
 }
 .line {
     width: 100%;
@@ -41,12 +41,37 @@ body {
     align-content: center;
     text-align: center;
 }
-.tour {
-    aspect-ratio: 1 / 1;
-    border-radius: 100%;
-    background-color: green;
+.tournoir {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    background-color: rgb(31, 23, 16);
+    cursor: pointer;
+    width:100%;
 }
-.poss {
-    aspect-ratio: 1 / 1;
-    background-color: green;
+.tourblanche {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    background-color: rgb(255, 232, 192);
+    cursor: pointer;
+    width:100%;
+}
+.tournoir:hover {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    transition: all 0.5s;
+    background-color: rgb(58, 40, 29);
+}
+.tourblanche:hover {
+    background: url(tour_blanche.png);
+    background-size: cover;
+    transition: all 0.5s;
+    background-color: rgb(184, 171, 144);
+}
+.noirposs {
+    transition: all 0.5s;
+    background-color: rgb(61, 53, 46);
+}
+.blancheposs {
+    transition: all 0.5s;
+    background-color: rgb(255, 252, 212);
 }
