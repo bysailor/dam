@@ -3,136 +3,76 @@ cgoti = '';
 idact = '23';
 idactive = ['23'];
 undo = [];
+all = [];
 let content = '';
 let n = 8;
 while (j < n) {
     content = content + '<div class="line">';
     while (i < n) {
         idil = j.toString() + i.toString();
-        if (k % 2 == 0) {
-            content = content + "<div class='noir' id='" + idil + "' onclick='go(event)'></div>";
-        }
-        else {
-            content = content + "<div class='blanc' id='" + idil + "' onclick='go(event)'></div>";
-        }
-        i = i + 1;
-        k = k + 1;
+        (k % 2 == 0 ? content = content + "<div class='noir' id='" + idil + "' onclick='go(event)'></div>" : content = content + "<div class='blanc' id='" + idil + "' onclick='go(event)'></div>");
+        all.push(idil); i = i + 1; k = k + 1;
     }
-    if (n % 2 == 0) {
-        k = k + 1
-    }
-    j = j + 1;
-    i = 0;
-    content = content + '</div>';
+    if (n % 2 == 0) { k = k + 1 }
+    j = j + 1; i = 0; content = content + '</div>';
 }
+for (var i = 0; i < all.length; i++) { if (all[i] === idactive[0]) { all.splice(i, 1); } }
 document.getElementById('divou').innerHTML = content;
 document.getElementById('bulu').innerHTML = '#divou {width: ' + eval(window.innerHeight - 4) + 'px;}';
 document.getElementById('23').className = 'tourblanche';
 function go(e) {
     var element = e.target || e.srcElement;
     idel = element.id;
+    check = no;
     if (c == 0) {
-        i = j = k = c = z = co = cn = cgoti = 0;
-        undo = [];
-        while (cn < idactive.length) {
-            if (idel == idactive[cn]) {
-                while (co < 78) {
-                    (co < 10 ? ci = '0' + co.toString() : ci = co.toString())
-                    if (idel[1] == ci[1] && idel[0] == ci[0]) {
-                        idact = idel;
-                    }
-                    if (((ci[1] == idel[1] && ci[0] != idel[0]) || (ci[1] != idel[1] && ci[0] == idel[0])) && ci[1] < 8) {
-                        cdot = document.getElementById(ci);
-                        (cdot.className == 'noir' ? cdot.className = 'noirposs' : cdot.className = 'blancheposs');
-                        undo.push(ci)
-                    }
-                    co = co + 1;
-                };
-                c = 1;
-            }
-            cn = cn + 1;
-        }
+        checktour();
+        c = 1;
     }
     else if (c == 1) {
-        while (z < undo.length) {
-            cgoti = document.getElementById(undo[z]);
-            (cgoti.className == 'noirposs' ? cgoti.className = 'noir' : cgoti.className = 'blanc')
-            z = z + 1;
+        while (wu < possibility.length) {
+            (idel == possibility[wu] ? check = yes : console.log('u'));
         }
-        document.getElementById('bulu').innerHTML = '#divou {width: ' + eval(window.innerHeight - 4) + 'px;}';
-        if ((idact[1] == idel[1] && idact[0] != idel[0]) || (idact[1] != idel[1] && idact[0] == idel[0])) {
-            cname = document.getElementById(idel);
-            (cname.className == 'noir' ? cname.className = 'tournoir' : cname.className = 'tourblanche')
-            cdact = document.getElementById(idact);
-            (cdact.className == 'tournoir' ? cdact.className = 'noir' : cdact.className = 'blanc')
-            idact = idel;
-            idactive = [idact.toString()]
+        if (check = 'yes') {
+            processtour();
         }
         else {
             document.getElementById('bulu').innerHTML = document.getElementById('bulu').innerHTML + '#divou {border: 2px solid red;}';
         }
         c = 0;
+        //CHANGE IDACTIVE
+        //UNDO ALL CELL
+        //PREVENT MISS CLICKING
     }
 }
 function checktour() {
-    idclicked = '23';
-    checktou = 1;
-    zi = 0;
-    possibility = [];
-    while (checktou < 8-parseInt(idclicked[1])) {
-        digit = document.getElementById(eval(parseInt(idclicked)+checktou));
-        if (digit.className == 'blanc' || digit.className == 'noir') {
-            possibility.push(eval(parseInt(idclicked)+checktou))
-        }
-        else {
-            possibility.push(eval(parseInt(idclicked)-checktou))
-            break;
-        }
-        checktou = checktou + 1;
-    }
-    checktou = 1;
-    while (checktou < 8-parseInt(idclicked[1])) {
-        digit = document.getElementById(eval(parseInt(idclicked)+checktou));
-        if (digit.className == 'blanc' || digit.className == 'noir') {
-            possibility.push(eval(parseInt(idclicked)-checktou))
-        }
-        else {
-            possibility.push(eval(parseInt(idclicked)-checktou))
-            break;
-        }
-        checktou = checktou + 1;
-    }
-    checktou = 1;
-    while (checktou < 8-parseInt(idclicked[0])) {
-        idchto = eval(parseInt(idclicked)-(checktou*10));
-        if (idchto < 10) {
-            idchto = '0' + idchto.toString();
-        }
-        digit = document.getElementById(idchto);
-        if (digit.className == 'blanc' || digit.className == 'noir') {
-            possibility.push(eval(parseInt(idclicked)-checktou*10))
-        }
-        else {
-            possibility.push(eval(parseInt(idclicked)-checktou*10))
-            break;
-        }
-        checktou = checktou + 1;
-    }
-    checktou = 1;
-    while (checktou < 7-parseInt(idclicked[0])) {
-        digit = document.getElementById(eval(parseInt(idclicked)+checktou*10));
-        if (digit.className == 'blanc' || digit.className == 'noir') {
-            possibility.push(eval(parseInt(idclicked)+checktou*10))
-        }
-        else {
-            possibility.push(eval(parseInt(idclicked)+checktou*10))
-            break;
-        }
-        checktou = checktou + 1;
+    idclicked = '23'; checktou = 1; zi = 0; possibility = [];
+    signe1 = '+'; signe = '-'; signe0 = '+'; inf = 0; coef = 10;
+    while (checktou < 8 - parseInt(idclicked[0])) { allezlopti(idclicked); }
+    signe1 = '-'; checktou = 1;
+    while (checktou < parseInt(idclicked[0]) + 1) { allezlopti(idclicked); }
+    signe0 = signe; checktou = 1; coef = 1;
+    while (checktou < parseInt(idclicked[1]) + 1) { allezlopti(idclicked); }
+    checktou = 1; signe1 = "+"; signe = "+"; signe0 = signe;
+    while (checktou < 8 - parseInt(idclicked[1])) { allezlopti(idclicked); }
+    xi = 0;
+    while (xi < 64 - idactive.length) {
+        cgotix = document.getElementById(all[xi]);
+        (cgotix.className == 'noir' ? cgotix.className = 'noirpaposs' : cgotix.className = 'blanchepaposs'); xi = xi + 1;
     }
     while (zi < possibility.length) {
         cgotit = document.getElementById(possibility[zi]);
-        (cgotit.className == 'noir' ? cgotit.className = 'noirposs' : cgotit.className = 'blancheposs')
-        zi = zi + 1;
+        (cgotit.className == 'noirpaposs' ? cgotit.className = 'noirposs' : cgotit.className = 'blancheposs'); zi = zi + 1;
     }
+}
+function allezlopti(e) {
+    idchto = eval(parseInt(idclicked) + signe0 + parseInt(checktou) * coef);
+    idchto1 = eval(parseInt(idclicked) + signe1 + checktou * coef);
+    idchtoo = eval(parseInt(idclicked) + signe + checktou * coef);
+    if (idchto1 < 10) { idchto1 = '0' + idchto1.toString(); }
+    digit = document.getElementById(idchto);
+    if (digit.className == 'blanc' || digit.className == 'noir') {
+        possibility.push(idchto1.toString());
+    }
+    else { possibility.push(idchtoo.toString()); checktou = checktou + 10; }
+    checktou = checktou + 1;
 }
